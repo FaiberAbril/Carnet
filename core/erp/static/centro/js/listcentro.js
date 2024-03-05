@@ -14,7 +14,9 @@ $(function () {
         },
         columns: [
             {"data": "id"},
-            {"data": "name"},
+            {"data": "codigo"},
+            {"data": "names"},
+            {"data": "region.name"},
             {"data": "opciones"}
         ],
         columnDefs: [

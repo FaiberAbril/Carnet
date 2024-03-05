@@ -2,6 +2,7 @@ from django.urls import path
 from core.erp.views.category.views import *
 from core.erp.views.cargo.views import *
 from core.erp.views.regional.views import *
+from core.erp.views.centro.views import *
 
 
 app_name = 'erp'
@@ -19,4 +20,8 @@ urlpatterns = [
     path('regional/add/', RegionalCreateView.as_view(), name='regional_create'),
     path('regional/update/<int:pk>/', RegionalUpdateView.as_view(), name='regional_update'),
     path('regional/delete/<int:pk>/', RegionalDeleteView.as_view(), name='regioanl_delete'),
+    path('centro/list/', centroListView.as_view(), name='centro_list'),
+    path('centro/add/', centroCreateView.as_view(), name='centro_create'),
+    path('centro/update/<int:pk>/', centroUpdateView.as_view(), name='centro_update'),
+    path('centro/delete/<int:pk>/', CentroDeleteView.as_view(), name='centro_delete'),
 ]

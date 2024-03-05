@@ -44,14 +44,18 @@ class Centro(models.Model):
     def __str__(self):
         return self.name
 
-    def toJSON(self):
-        item = model_to_dict(self)
-        return item
-
     class Meta:
         verbose_name = 'Centro'
         verbose_name_plural = 'Centros'
         ordering = ['id']
+
+    def toJSON(self):
+        return {
+            'id': self.id,
+            'codigo': self.codigo,
+            'names': self.name,
+            'region': self.region.toJSON() if self.region else None
+        }
 
 class Cargo(models.Model):
     name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
