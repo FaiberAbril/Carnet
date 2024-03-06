@@ -100,6 +100,10 @@ class Aprendiz(models.Model):
 
     def __str__(self):
         return self.names
+    
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
 
     class Meta:
         verbose_name = 'Aprendiz'

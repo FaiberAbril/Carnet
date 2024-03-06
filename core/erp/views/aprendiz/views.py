@@ -28,6 +28,7 @@ class AprendizListView(ListView):
                 data['error'] = 'Ha ocurrido un error'
         except Exception as e:
             data['error'] = str(e)
+        print(data)
         return JsonResponse(data, safe=False)
 
     def get_context_data(self, **kwargs):
