@@ -3,6 +3,8 @@ from core.erp.views.category.views import *
 from core.erp.views.cargo.views import *
 from core.erp.views.regional.views import *
 from core.erp.views.centro.views import *
+from core.erp.views.formacion.views import *
+from core.erp.views.aprendiz.views import *
 
 
 app_name = 'erp'
@@ -24,4 +26,12 @@ urlpatterns = [
     path('centro/add/', centroCreateView.as_view(), name='centro_create'),
     path('centro/update/<int:pk>/', centroUpdateView.as_view(), name='centro_update'),
     path('centro/delete/<int:pk>/', CentroDeleteView.as_view(), name='centro_delete'),
+    path('formacion/list/', formacionListView.as_view(), name='formacion_list'),
+    path('formacion/add/', formacionCreateView.as_view(), name='formacion_create'),
+    path('formacion/update/<int:pk>/', formacionUpdateView.as_view(), name='formacion_update'),
+    path('formacion/delete/<int:pk>/', formacionDeleteView.as_view(), name='formacion_delete'),
+    path('aprendiz/list/', AprendizListView.as_view(), name='aprendiz_list'),
+    path('aprendiz/add/', AprendizCreateView.as_view(), name='aprendiz_create'),
+    path('aprendiz/update/<int:pk>/', AprendizupdateView.as_view(), name='aprendiz_update'),
+    path('aprendiz/delete/<int:pk>/', AprendizDeleteView.as_view(), name='aprendiz_delete'),
 ]
