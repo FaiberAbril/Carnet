@@ -5,6 +5,7 @@ from core.erp.views.regional.views import *
 from core.erp.views.centro.views import *
 from core.erp.views.formacion.views import *
 from core.erp.views.aprendiz.views import *
+from core.erp.views.funcionario.views import *
 
 
 app_name = 'erp'
@@ -34,4 +35,8 @@ urlpatterns = [
     path('aprendiz/add/', AprendizCreateView.as_view(), name='aprendiz_create'),
     path('aprendiz/update/<int:pk>/', AprendizupdateView.as_view(), name='aprendiz_update'),
     path('aprendiz/delete/<int:pk>/', AprendizDeleteView.as_view(), name='aprendiz_delete'),
+    path('funcionario/list/', funcionarioListView.as_view(), name='funcionario_list'),
+    path('funcionario/add/', funcionarioCreateView.as_view(), name='funcionario_create'),
+    path('funcionario/update/<int:pk>/', funcionarioupdateView.as_view(), name='funcionario_update'),
+    path('funcionario/delete/<int:pk>/', funcionarioDeleteView.as_view(), name='funcionario_delete'),
 ]

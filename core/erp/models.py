@@ -127,3 +127,25 @@ class funcionario(models.Model):
         verbose_name = 'funcionario'
         verbose_name_plural = 'funcionario'
         ordering = ['id']
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item
+    
+
+
+"""class logo(models.Model):
+    logoimg = name = models.CharField(max_length=23, blank=True, null=True)
+
+
+    def __str__(self):
+        return self.names
+
+    class Meta:
+        verbose_name = 'logo'
+        verbose_name_plural = 'logos'
+        ordering = ['id']
+
+    def toJSON(self):
+        item = model_to_dict(self)
+        return item"""
