@@ -97,15 +97,26 @@ class Aprendiz(models.Model):
     surnames = models.CharField(max_length=30, verbose_name='Apellidos')
     tipoDocumento= models.CharField(max_length=50, choices=tipoDocumento, default='C.C', verbose_name='TipoDocumento')
     numeroDocumento = models.CharField(max_length=10, verbose_name='numeroDocumento', null=True, blank=True)   
-    tipoSangre= models.CharField(max_length=50, choices=tiposDeSangre, default='0-', verbose_name='TipoDocumento')
+    tipoSangre= models.CharField(max_length=50, choices=tiposDeSangre, default='0-', verbose_name='TipoSangre')
     Formacion = models.ForeignKey(Formacion, on_delete=models.CASCADE, null=False, blank=False, default=1)
+    imgAprendices = models.ImageField(upload_to='Aprendices', null=True, blank=True)
 
     def __str__(self):
         return self.names
     
     def toJSON(self):
-        item = model_to_dict(self)
-        return item
+        return {
+            'id': self.id,
+            'cargo': self.cargo,
+            'names': self.names,
+            'surnames': self.surnames,
+            'tipoDocumento': self.tipoDocumento,
+            'numeroDocumento': self.numeroDocumento,
+            'tipoSangre': self.tipoSangre,
+            'Formacion': self.Formacion.numeroFicha,  # Utiliza el nombre del campo correcto
+            'imgAprendices': self.imgAprendices.url,
+        }
+
 
     class Meta:
         verbose_name = 'Aprendiz'
@@ -120,6 +131,7 @@ class funcionario(models.Model):
     tipoDocumento= models.CharField(max_length=50, choices=tipoDocumento, default='C.C', verbose_name='TipoDocumento')
     numeroDocumento = models.CharField(max_length=10, verbose_name='numeroDocumento', null=True, blank=True)   
     tipoSangre= models.CharField(max_length=50, choices=tiposDeSangre, default='0-', verbose_name='TipoDocumento')
+    imgfuncionario = models.ImageField(upload_to='funcionario', null=True, blank=True)
 
 
     def __str__(self):
@@ -131,8 +143,16 @@ class funcionario(models.Model):
         ordering = ['id']
 
     def toJSON(self):
-        item = model_to_dict(self)
-        return item
+        return {
+            'id': self.id,
+            'cargo': self.cargo.name,
+            'names': self.names,
+            'surnames': self.surnames,
+            'tipoDocumento': self.tipoDocumento,
+            'numeroDocumento': self.numeroDocumento,
+            'tipoSangre': self.tipoSangre,
+            'imgfuncionario': self.imgfuncionario.url,
+        }
     
 
 

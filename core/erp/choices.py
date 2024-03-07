@@ -23,12 +23,12 @@ tipoDocumento = [
 
 
 tiposDeSangre = [
-    ('O negativo', 'O-'),
-    ('O positivo', 'O+'),
-    ('A negativo', 'A-'),
-    ('A positivo', 'A+'),
-    ('B negativo', 'B-'),
-    ('B positivo', 'B+'),
-    ('AB negativo', 'AB-'),
-    ('AB positivo', 'AB+')
+    ('O negativo', 'RH O-'),
+    ('O positivo', 'RH O+'),
+    ('A negativo', 'RH A-'),
+    ('A positivo', 'RH A+'),
+    ('B negativo', 'RH B-'),
+    ('B positivo', 'RH B+'),
+    ('AB negativo', 'RH AB-'),
+    ('AB positivo', 'RH AB+')
 ]

@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import *
+from django.http import HttpResponseRedirect
 
 from core.erp.forms import AprendizForm
 from core.erp.models import Aprendiz
@@ -45,18 +46,9 @@ class AprendizCreateView(CreateView):
     template_name = 'aprendiz/create.html'
     success_url = reverse_lazy('erp:aprendiz_list')
 
-    def post(self, request, *args, **kwargs):
-        data = {}
-        try:
-            action = request.POST['action']
-            if action == 'add':
-                form = self.get_form()
-                data = form.save()
-            else:
-                data['error'] = 'No ha ingresado a ninguna opción'
-        except Exception as e:
-            data['error'] = str(e)
-        return JsonResponse(data)
+    def form_valid(self, form):
+        self.object = form.save()
+        return HttpResponseRedirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -73,22 +65,9 @@ class AprendizupdateView(UpdateView):
     template_name = 'aprendiz/create.html'
     success_url = reverse_lazy('erp:aprendiz_list')
 
-    def dispatch(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        return super().dispatch(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        data = {}
-        try:
-            action = request.POST['action']
-            if action == 'edit':
-                form = self.get_form()
-                data = form.save()
-            else:
-                data['error'] = 'No ha ingresado a ninguna opción'
-        except Exception as e:
-            data['error'] = str(e)
-        return JsonResponse(data)
+    def form_valid(self, form):
+        self.object = form.save()
+        return HttpResponseRedirect(self.success_url)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
