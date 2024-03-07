@@ -137,7 +137,7 @@ class funcionario(models.Model):
 
 
 class logo(models.Model):
-    logoimg = models.ImageField(upload_to='logo', null=True, blank=True)
+    logoimg = models.ImageField(upload_to='logo', null=False, blank=False)
 
     def __str__(self):
         return self.logoimg

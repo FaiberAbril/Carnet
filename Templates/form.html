@@ -31,9 +31,15 @@
                     </div>
                 {% endif %}
                 {% for field in form.visible_fields %}
-                    <div class="form-group">
-                        <label for="email">{{ field.label }}:</label>
-                        {{ field|add_class:'form-control'|attr:'autocomplete:off' }}
+                <div class="form-group">
+                {% if  action == 'add' %}
+                    <label for="email">{{ field.label }}:</label>
+                    {{ field|add_class:'form-control'|attr:'autocomplete:off' }}
+                {% else %}
+                    <img src="{{ field.value.url }}" alt="{{ field.label }}" class="img-fluid">
+                    <label for="email">{{ field.label }}:</label>
+                    {{ field|add_class:'form-control'|attr:'autocomplete:off' }}
+                {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -65,12 +71,12 @@
             });
         {% endif %}
 
-/*$('form').on('submit', function (e) {
+$('form').on('submit', function (e) {
             e.preventDefault();
             var parameters = $(this).serializeArray();
             submit_with_ajax(window.location.pathname, 'Notificación', '¿Estas seguro de realizar la siguiente acción?', parameters, function () {
                 location.href = '{{ list_url }}';
             });
-        });*/
+        });
     </script>
 {% endblock %}
