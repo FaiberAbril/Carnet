@@ -142,14 +142,15 @@ class logo(models.Model):
     def __str__(self):
         return self.logoimg
     
-    def get_image(self):
-        if self.logoimg:
-            return '{}{}'.format(MEDIA_URL, self.logoimg)
-        return '{}{}'.format(STATIC_URL, 'img/empty.png')
-
     class Meta:
         verbose_name = 'logo'
         verbose_name_plural = 'logos'
         ordering = ['id']
+
+    def toJSON(self):
+        return {
+            'id': self.id,
+            'logoimg': str(self.logoimg),
+        }
 
 

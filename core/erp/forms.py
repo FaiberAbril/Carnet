@@ -218,7 +218,7 @@ class logoForm(ModelForm):
         }
 
     
-    """def save(self, commit=True):
+    def save(self, commit=True):
         data = {}
         form = super()
         try:
@@ -228,4 +228,4 @@ class logoForm(ModelForm):
                 data['error'] = form.errors
         except Exception as e:
             data['error'] = str(e)
-        return data"""
+        return data
