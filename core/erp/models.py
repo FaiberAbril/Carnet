@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 
+
+from config.settings import MEDIA_URL, STATIC_URL
 from django.forms import model_to_dict
 from core.erp.choices import clasificacion,tipoDocumento,tiposDeSangre
 
@@ -134,18 +136,20 @@ class funcionario(models.Model):
     
 
 
-"""class logo(models.Model):
-    logoimg = name = models.CharField(max_length=23, blank=True, null=True)
-
+class logo(models.Model):
+    logoimg = models.ImageField(upload_to='logo', null=True, blank=True)
 
     def __str__(self):
-        return self.names
+        return self.logoimg
+    
+    def get_image(self):
+        if self.logoimg:
+            return '{}{}'.format(MEDIA_URL, self.logoimg)
+        return '{}{}'.format(STATIC_URL, 'img/empty.png')
 
     class Meta:
         verbose_name = 'logo'
         verbose_name_plural = 'logos'
         ordering = ['id']
 
-    def toJSON(self):
-        item = model_to_dict(self)
-        return item"""
+

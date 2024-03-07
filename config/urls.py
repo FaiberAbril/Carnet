@@ -18,8 +18,14 @@ from django.urls import path,include
 from core.homepage.views import indexView
 from core.login.views import loginFormView
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('erp/', include('core.erp.urls')),
     path('login/', include('core.login.urls'))
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

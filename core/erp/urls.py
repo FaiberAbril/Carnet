@@ -6,7 +6,7 @@ from core.erp.views.centro.views import *
 from core.erp.views.formacion.views import *
 from core.erp.views.aprendiz.views import *
 from core.erp.views.funcionario.views import *
-
+from core.erp.views.logo.views import *
 
 app_name = 'erp'
 
@@ -39,4 +39,8 @@ urlpatterns = [
     path('funcionario/add/', funcionarioCreateView.as_view(), name='funcionario_create'),
     path('funcionario/update/<int:pk>/', funcionarioupdateView.as_view(), name='funcionario_update'),
     path('funcionario/delete/<int:pk>/', funcionarioDeleteView.as_view(), name='funcionario_delete'),
+    path('logo/list/', LogoListView.as_view(), name='logo_list'),
+    path('logo/add/', LogoCreateView.as_view(), name='logo_create'),
+    path('logo/update/<int:pk>/', LogoUpdateView.as_view(), name='logo_update'),
+    path('logo/delete/<int:pk>/', LogoDeleteView.as_view(), name='logo_delete'),
 ]

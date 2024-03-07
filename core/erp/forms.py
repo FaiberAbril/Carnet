@@ -1,6 +1,6 @@
 from django.forms import *
 
-from core.erp.models import Category,Regional,Centro,Cargo,Formacion,Aprendiz,funcionario
+from core.erp.models import Category,Regional,Centro,Cargo,Formacion,Aprendiz,funcionario,logo
 
 class CategoryForm(ModelForm):
     def __init__(self, *args, **kwargs):
@@ -202,3 +202,30 @@ class funcionarioForm(ModelForm):
         except Exception as e:
             data['error'] = str(e)
         return data
+    
+
+
+
+class logoForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = logo
+        fields = '__all__'
+        widgets = {
+
+        }
+
+    
+    """def save(self, commit=True):
+        data = {}
+        form = super()
+        try:
+            if form.is_valid():
+                form.save()
+            else:
+                data['error'] = form.errors
+        except Exception as e:
+            data['error'] = str(e)
+        return data"""
