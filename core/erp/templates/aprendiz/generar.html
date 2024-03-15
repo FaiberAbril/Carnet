@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% for dato in datos %} 
+
+
+<img src="{{ imglogo.logoimg.url }}" alt="Logo">
+
+    <div class="container">
+        <div class="title">{{dato.cargo}}</div>
+        <div class="info-group">
+
+            <img src="{{ dato.imgAprendices.url }}" alt="foto">
+
+           
+
+
+            <div class="info-label">Nombre:</div>
+            <div class="info-value">{{dato.names}}</div>
+        </div>
+        <div class="info-group">
+            <div class="info-label">Apellidos:</div>
+            <div class="info-value">{{dato.surnames}}</div>
+        </div>
+        <div class="info-group">
+            <div class="info-label">{{dato.tipoDocumento}}</div>
+            <div class="info-value">{{dato.numeroDocumento}}</div>
+        </div>
+        <div class="info-group">
+            <div class="info-label">Tipo de Sangre:</div>
+            <div class="info-value">{{dato.tipoSangre}}</div>
+        </div>
+        <div class="info-group">
+            <div class="info-label">Fecha de Nacimiento:</div>
+            <div class="info-value">1993-05-18</div>
+        </div>
+        <div class="info-group">
+            <div class="info-label">Regional Santander<div>
+            <div class="info-value">Centro Agroempresaril y turisticoandes</div>
+        </div>
+
+
+    </div>
+
+    {% endfor %}
+</body>
+</html>

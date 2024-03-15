@@ -31,6 +31,8 @@ urlpatterns = [
     path('formacion/add/', formacionCreateView.as_view(), name='formacion_create'),
     path('formacion/update/<int:pk>/', formacionUpdateView.as_view(), name='formacion_update'),
     path('formacion/delete/<int:pk>/', formacionDeleteView.as_view(), name='formacion_delete'),
+
+    path('aprendiz/generar/<int:pk>/', generar_carnet_pdf, name='aprendiz_generar'),
     path('aprendiz/list/', AprendizListView.as_view(), name='aprendiz_list'),
     path('aprendiz/add/', AprendizCreateView.as_view(), name='aprendiz_create'),
     path('aprendiz/update/<int:pk>/', AprendizupdateView.as_view(), name='aprendiz_update'),

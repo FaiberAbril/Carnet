@@ -5,8 +5,18 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import *
 from django.http import HttpResponseRedirect
 
+from django.shortcuts import render
+from django.http import HttpResponse
+
 from core.erp.forms import AprendizForm
-from core.erp.models import Aprendiz
+from core.erp.models import Aprendiz,logo
+
+
+def generar_carnet_pdf(request,pk):
+    datos = Aprendiz.objects.filter(pk=pk)
+    imglogo = logo.objects.all()
+
+    return render(request, 'aprendiz/generar.html',{'datos': datos,'imglogo': imglogo})
 
 
 class AprendizListView(ListView):
@@ -47,6 +57,8 @@ class AprendizCreateView(CreateView):
     success_url = reverse_lazy('erp:aprendiz_list')
 
     def form_valid(self, form):
+
+        
         self.object = form.save()
         return HttpResponseRedirect(self.success_url)
 
@@ -101,3 +113,5 @@ class AprendizDeleteView(DeleteView):
         context['entity'] = 'Centros'
         context['list_url'] = reverse_lazy('erp:aprendiz_list')
         return context
+
+
